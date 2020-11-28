@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OdsReadWrite", "OdsReadWrite\OdsReadWrite.csproj", "{3E3635B4-C688-417F-A848-7F8F457E825F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libOdsReadWrite", "libOdsReadWrite\libOdsReadWrite.csproj", "{07412B64-79A1-42AD-986F-36722A95815A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOdsReaderWriter", "TestOdsReaderWriter\TestOdsReaderWriter.csproj", "{E565107F-41C6-4085-8955-D57233D9995C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E3635B4-C688-417F-A848-7F8F457E825F}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3E3635B4-C688-417F-A848-7F8F457E825F}.Debug|x86.ActiveCfg = Debug|x86
+		{3E3635B4-C688-417F-A848-7F8F457E825F}.Debug|x86.Build.0 = Debug|x86
+		{3E3635B4-C688-417F-A848-7F8F457E825F}.Release|Any CPU.ActiveCfg = Release|x86
+		{3E3635B4-C688-417F-A848-7F8F457E825F}.Release|x86.ActiveCfg = Release|x86
+		{3E3635B4-C688-417F-A848-7F8F457E825F}.Release|x86.Build.0 = Release|x86
+		{07412B64-79A1-42AD-986F-36722A95815A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Debug|x86.Build.0 = Debug|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Release|x86.ActiveCfg = Release|Any CPU
+		{07412B64-79A1-42AD-986F-36722A95815A}.Release|x86.Build.0 = Release|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E565107F-41C6-4085-8955-D57233D9995C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7677F96-DE3C-4FF7-973F-534FA4101B72}
+	EndGlobalSection
+EndGlobal

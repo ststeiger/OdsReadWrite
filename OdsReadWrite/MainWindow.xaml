@@ -1,0 +1,103 @@
+﻿<Window x:Class="OdsReadWrite.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:OdsReadWrite"
+        Title="ODS Read / Write" Height="350" Width="720">
+    <Window.DataContext>
+        <local:MainWindowModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="{x:Type FrameworkElement}">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style TargetType="{x:Type FrameworkElement}" x:Key="VerticalAlignmentStyle">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type GroupBox}" BasedOn="{StaticResource {x:Type FrameworkElement}}">
+            <Setter Property="Padding" Value="2"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}"  BasedOn="{StaticResource {x:Type FrameworkElement}}">
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="Background" Value="#7FFF0000"/>
+                    <Setter Property="ToolTip" Value="{Binding (Validation.Errors)/ErrorContent, RelativeSource={RelativeSource Self}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type FrameworkElement}}">
+            <Setter Property="Padding" Value="5,0,5,0"/>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource VerticalAlignmentStyle}"/>
+        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource VerticalAlignmentStyle}"/>
+        <Style TargetType="{x:Type TabControl}" BasedOn="{StaticResource {x:Type FrameworkElement}}"/>
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource {x:Type FrameworkElement}}"/>
+    </Window.Resources>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="New .ods file">
+                <Grid Grid.IsSharedSizeScope="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="Label"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Sheets:"/>
+                    <TextBox Grid.Column="1" Text="{Binding Sheets, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBlock Grid.Row="1" Text="Rows:"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <TextBlock Grid.Column="2" Text="Columns:"/>
+                    <TextBox Grid.Column="3" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <Button Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Content="Create" Command="{Binding CreateCommand, Mode=OneTime}"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Column="1" Header="Read .ods file">
+                <StackPanel>
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right" Content="..." Command="{Binding ShowOpenFileDialogCommand, Mode=OneTime}"/>
+                        <TextBox Text="{Binding InputPath, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </DockPanel>
+                    <Button Content="Read .ods file" HorizontalAlignment="Left" Command="{Binding ReadCommand, Mode=OneTime}"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="2" Header="Write .ods file">
+                <StackPanel>
+                    <DockPanel>
+                        <Button DockPanel.Dock="Right" Content="..." Command="{Binding ShowSaveFileDialogCommand, Mode=OneTime}"/>
+                        <TextBox Text="{Binding OutputPath, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Write .ods file" Command="{Binding WriteCommand, Mode=OneTime}"/>
+                        <CheckBox IsThreeState="False" IsChecked="{Binding OpenCreatedFile}" Content="Open created file"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <TabControl ItemsSource="{Binding Data.Tables}" SelectedIndex="{Binding SelectedDataTableIndex}">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Header" Value="{Binding TableName}"/>
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <DataGrid ItemsSource="{Binding}"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.ItemContainerStyle>
+        </TabControl>
+    </DockPanel>
+</Window>
